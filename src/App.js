@@ -8,6 +8,10 @@ import {
   IonItem,
   IonLabel,
   IonDatetime,
+  IonCard,
+  IonCardHeader,
+  IonCardTitle,
+  IonCardContent,
 } from '@ionic/react';
 import React, { useState } from 'react';
 
@@ -24,18 +28,22 @@ function App() {
       </IonHeader>
       <IonContent className='ion-padding'>
         <IonItem>
-          <IonLabel position='floating'>Name:</IonLabel>
-          <IonInput value={name} onIonChange={(event) => setName(event.detail.value)} />
-        </IonItem>
-        <IonItem>
           <IonLabel position='floating'>Date of birth:</IonLabel>
           <IonDatetime
             displayFormat='D MMM YYYY'
             onIonChange={(event) => setBirthday(event.detail.value)}
           />
         </IonItem>
-        <p>Name {name}</p>
-        <p>Birthday {birthday}</p>
+        <IonCard className='ion-text-center'>
+          <IonCardHeader>
+            <IonCardTitle>18 Feb 2020</IonCardTitle>
+            <IonCardContent>
+              <p>Physical: 80%</p>
+              <p>Emotional: 80%</p>
+              <p>Intellectual: 80%</p>
+            </IonCardContent>
+          </IonCardHeader>
+        </IonCard>
       </IonContent>
     </IonApp>
   );
