@@ -12,7 +12,7 @@ import React, { useState } from 'react';
 import BiorhythmCard from './components/BiorhythmCard';
 
 function App() {
-  const [birthday, setBirthday] = useState('2020-01-31');
+  const [birthDate, setBirthDate] = useState();
   const targetDate = new Date().toISOString();
 
   return (
@@ -23,14 +23,14 @@ function App() {
         </IonToolbar>
       </IonHeader>
       <IonContent className='ion-padding'>
+        {birthDate && <BiorhythmCard birthDate={birthDate} targetDate={targetDate} />}
         <IonItem>
           <IonLabel position='floating'>Date of birth:</IonLabel>
           <IonDatetime
             displayFormat='D MMM YYYY'
-            onIonChange={(event) => setBirthday(event.detail.value)}
+            onIonChange={(event) => setBirthDate(event.detail.value)}
           />
         </IonItem>
-        <BiorhythmCard targetDate={targetDate} />
       </IonContent>
     </IonApp>
   );
