@@ -22,8 +22,12 @@ function App() {
       </IonHeader>
       <IonContent className='ion-padding'>
         <IonItem>
-          <IonLabel>Name:</IonLabel>
+          <IonLabel position='floating'>Name:</IonLabel>
           <IonInput value={name} onIonChange={(event) => setName(event.detail.value)} />
+        </IonItem>
+        <IonItem>
+          <IonLabel position='floating'>Date of birth:</IonLabel>
+          <IonInput />
         </IonItem>
         <p>Name {name}</p>
       </IonContent>
