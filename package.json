@@ -12,9 +12,11 @@
     "dayjs": "^1.11.1",
     "ionicons": "^5.5.0",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "recharts": "^2.1.9"
   },
   "devDependencies": {
+    "@types/recharts": "^1.8.23",
     "react-scripts": "5.0.0"
   },
   "eslintConfig": {
