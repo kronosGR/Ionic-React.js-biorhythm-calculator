@@ -1,20 +1,34 @@
+import dayjs from 'dayjs';
 import React from 'react';
-import { Line, LineChart, ResponsiveContainer, XAxis } from 'recharts';
+import {
+  CartesianGrid,
+  Line,
+  LineChart,
+  ReferenceLine,
+  ResponsiveContainer,
+  XAxis,
+} from 'recharts';
+import { calculateBiorhythmSeries } from '../calculations';
 
-const data = [
-  { date: '2020-02-01', physical: 0.99, emotional: 0.5, intellectual: -0.25 },
-  { date: '2020-02-02', physical: 0.1, emotional: -0.5, intellectual: 0.25 },
-  { date: '2020-02-03', physical: 0.19, emotional: 0.15, intellectual: -0.45 },
-];
+function formatDate(isoString) {
+  return dayjs(isoString).format('D MMM');
+}
 
-export default function BiorhythmChart() {
+export default function BiorhythmChart({ birthDate, targetDate }) {
+  const startDate = dayjs(targetDate).subtract(15, 'days').toISOString();
+  const data = calculateBiorhythmSeries(birthDate, startDate, 31).map((item) => ({
+    ...item,
+    date: formatDate(item.date),
+  }));
   return (
     <ResponsiveContainer width='100%' height={200}>
       <LineChart data={data}>
         <XAxis dataKey='date' />
-        <Line dataKey='physical' stroke='green' />
-        <Line dataKey='emotional' stroke='red' />
-        <Line dataKey='intellectual' stroke='blue' />
+        <CartesianGrid vertical={false} strokeDasharray='3 3' />
+        <ReferenceLine x={data[15].date} />
+        <Line type='natural' dot={false} dataKey='physical' stroke='green' />
+        <Line type='natural' dot={false} dataKey='emotional' stroke='red' />
+        <Line type='natural' dot={false} dataKey='intellectual' stroke='blue' />
       </LineChart>
     </ResponsiveContainer>
   );

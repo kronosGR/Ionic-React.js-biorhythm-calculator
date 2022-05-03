@@ -18,7 +18,7 @@ export default function BiorhythmCard({ birthDate, targetDate }) {
       <IonCardHeader>
         <IonCardTitle>{formatDate(targetDate)}</IonCardTitle>
         <IonCardContent>
-          <BiorhythmChart />
+          <BiorhythmChart birthDate={birthDate} targetDate={targetDate} />
           <p>Physical: {physical.toFixed(4)}</p>
           <p>Emotional: {emotional.toFixed(4)}</p>
           <p>Intellectual: {intellectual.toFixed(4)}</p>

@@ -9,8 +9,20 @@ function calculateBiorhythm(birthDate, targetDate, cycle) {
 
 export function calculateBiorhythms(birthDate, targetDate) {
   return {
+    date: targetDate,
     physical: calculateBiorhythm(birthDate, targetDate, 23),
     emotional: calculateBiorhythm(birthDate, targetDate, 28),
     intellectual: calculateBiorhythm(birthDate, targetDate, 33),
   };
+}
+
+export function calculateBiorhythmSeries(birdDate, startDate, size) {
+  const series = [];
+  const startDay = dayjs(startDate).startOf('day');
+  for (let i = 0; i < size; i++) {
+    const targetDate = startDay.add(i, 'days');
+    series.push(calculateBiorhythms(birdDate, targetDate));
+  }
+
+  return series;
 }
