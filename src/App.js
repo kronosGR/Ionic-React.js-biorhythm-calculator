@@ -23,7 +23,7 @@ function App() {
           <IonTitle>Biorhythms</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent className='ion-padding'>
+      <IonContent className='biorhythm-card ion-padding'>
         {birthDate && <BiorhythmCard birthDate={birthDate} targetDate={targetDate} />}
         <IonItem>
           <IonLabel position='fixed'>Date of birth:</IonLabel>
